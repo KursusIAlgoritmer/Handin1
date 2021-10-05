@@ -14,9 +14,9 @@ public class InputOutput{
 		}
 		
 		public int compareTo(By by){  
-			if(by.rang> rang)				return -1;
-			else if(by.rang < rang)		return 1;	
-			else								return 0;
+			if(by.rang> rang) return -1;
+			else if(by.rang < rang)	return 1;	
+			else return 0;
 		}  
 		
 	}
@@ -25,22 +25,21 @@ public class InputOutput{
 	
 	public static void main(String[] args) throws Exception{
 		
-			InputStreamReader 	r				=	new InputStreamReader(System.in);    
-    		BufferedReader 		br				=	new BufferedReader(r);       		
-			BufferedOutputStream os				=	new BufferedOutputStream(System.out);
-      	PrintWriter 			w 				=	new PrintWriter(os);  
+		InputStreamReader 	r	=	new InputStreamReader(System.in);    
+    		BufferedReader 		br	=	new BufferedReader(r);       		
+		BufferedOutputStream 	os	=	new BufferedOutputStream(System.out);
+		PrintWriter w 			=	new PrintWriter(os);  
 		
-      	StringTokenizer		st;
+      		StringTokenizer		st;
 			
-			int antalByer	= Integer.parseInt(br.readLine());
+			int antalByer			= Integer.parseInt(br.readLine());
 				
-			By[]		byObjekter					= new By[antalByer];				
+			By[]		byObjekter	= new By[antalByer];				
 		
 			//Læser antallet af kunder pr by ind i et array
 			for(int i=0; i < antalByer; i++){				
-				st					=	new StringTokenizer(br.readLine());
+				st		=	new StringTokenizer(br.readLine());
 				byObjekter[i]	=	new By( st.nextToken(), Integer.parseInt(st.nextToken()));
-				
 			}
 		
 			//Læser afstande ind i imellem hver by OG beregner rang
@@ -48,7 +47,7 @@ public class InputOutput{
 				st	=	new StringTokenizer(br.readLine());
 
 				for(int j=0; j< antalByer; j++){
-					int	afstand			=	Integer.parseInt(st.nextToken());
+					int	afstand		=	Integer.parseInt(st.nextToken());
 					byObjekter[i].rang	=	byObjekter[i].rang + afstand*byObjekter[j].kunder;
 				}				
 			}
@@ -62,10 +61,9 @@ public class InputOutput{
 			w.flush();  
 	
 			br.close();    
-    		r.close();  
+    			r.close();  
 			w.close();
 			os.close();		
-		
 	}
 	
 	
