@@ -32,9 +32,9 @@ public class InputOutput{
 		
       		StringTokenizer		st;
 			
-			int antalByer			= Integer.parseInt(br.readLine());
+			int	antalByer	= Integer.parseInt(br.readLine());
 				
-			By[]		byObjekter	= new By[antalByer];				
+			By[]	byObjekter	= new By[antalByer];				
 		
 			//Læser antallet af kunder pr by ind i et array
 			for(int i=0; i < antalByer; i++){				
