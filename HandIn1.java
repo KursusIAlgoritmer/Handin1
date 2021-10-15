@@ -1,63 +1,61 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 class HandIn1{
 
-  public static void main(String[] args){
-    Scanner s = new Scanner(System.in);
 
-    int N = s.nextInt();
+    private static class By implements Comparable<By>{
+      String navn;	int kunder; int samletAfstandTilKunder;
 
-    String[] byer = new String[N];
-    int[] kunder  = new int[N];
-    int[] rang    = new int[N];
+      By(String navn, int kunder){this.navn = navn; this.kunder	= kunder;}
 
-    int[] afstande= new int[(N*N - N)/2]; //antal afstande
+      public int compareTo(By byer){
+        if(byer.samletAfstandTilKunder      > samletAfstandTilKunder)      return -1;
+        else if(byer.samletAfstandTilKunder < samletAfstandTilKunder)	     return 1;
+        else  return 0;
+      }
 
-    //Indlæser antal kunder pr.by
-    for(int i = 0; i < N; i++){
-      byer[i]     = s.next();
-      kunder[i]   = s.nextInt();
+      public void addAfstandTilKunder(By byer, int afstandTilBy){samletAfstandTilKunder += byer.kunder*afstandTilBy;}
     }
 
-    //Indlæser afstande imellem byer og beregner rang
-    int count=0;
-    s.nextLine(); //dette er den første linje der skal skippes
-    for(int row = 0 ; row < N ; row ++){
-      for(int column = 0; column < row ; column ++){
-        int afstand     = s.nextInt();
-        afstande[count] = afstand;
 
-        //Jeg kunne beregne "rang" her men så skal man tage indlæsning med i tidskompleksiteten
-        
-      //  rang[row]     += kunder[column]*afstand;
-      //  rang[column]  += kunder[row]*afstand;
+    public static void invertedInsertionSort(Comparable[] a){
+      int N = a.length;
+        for (int i = 1; i < N; i ++){
+            for (int j = i; j > 0 && a[j-1].compareTo(a[j]) > 0 ; j--){
+              Comparable t = a[j]; a[j] = a[j-1]; a[j-1] = t;
+            }
+          }
+    }
 
-        count++;
+
+    public static void main(String[] args){
+      Scanner s = new Scanner(System.in);
+      int N     = s.nextInt();
+      By[] byer   = new By[N];
+
+
+    //Indlæser bynavn og antal kunder og opretter byer-objekter
+    for(int i = 0; i < N; i++){
+      byer[i] = new By(s.next(),s.nextInt());
+    }
+
+
+    //Indlæser afstande imellem byer og beregner samletAfstandTilKunder
+    s.nextLine();
+    for(int r = 0 ; r < N ; r ++){
+      for(int c = 0; c < r ; c ++){
+        int afstand = s.nextInt();
+         byer[c].addAfstandTilKunder( byer[r],afstand);
+         byer[r].addAfstandTilKunder( byer[c],afstand);
       }
       s.nextLine();
     }
 
+    //Sorterer byerne på baggrund af summeret afstand til kunder, mindste først
+    invertedInsertionSort(byer);
 
-    count=0;
-    for(int row = 0 ; row < N ; row ++){
-      for(int column = 0; column < row ; column ++){
-        rang[row]     += kunder[column]*afstande[count];
-        rang[column]  += kunder[row]*afstande[count];
-        count++;
-      }
-    }
-
-/*
-    System.out.println("Afstande indlæst:" +count);
-    for(int i = 0; i < rang.length; i++){
-      System.out.println("rang:" + rang[i]);
-    }*/
-
-    System.out.println("Afstande indlæst:" +count);
-    for(int i = 0; i < rang.length; i++){
-      System.out.println("rank:" + rang[i]);
-    }
-
+    for(By by: byer)System.out.println(by.navn);
   }
 
 }
