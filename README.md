@@ -13,8 +13,6 @@ Pseudokode for indlæsning og beregning af samlede afstand til kunder:
 Pseudokode for sortering:
 
 
-Opgaven går ud på at beregne den samlede afstand til alle kunder i N byer målt fra en af byerne og rangere byerne 
-
 
 Kompilering:
 javac InputOutput.java
