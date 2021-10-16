@@ -41,12 +41,12 @@ Nedenfor ses pseudokoden, der beskriver en løsning til del 1:
 16:     gå til næste linje i inputet
 17:}
 </pre>
-I input 1, indlæses N, der angiver antallet af byer. Herefter oprettes en liste "byer", med plads til N by-objekter.</br>
+I input 1: Indlæsning af N og oprettelse af liste med plads til N "byer"</br>
 
-I input 2, For hver indlæsning oprettes et by-objekt i by-listen, der indholder byens navn, antal kunder og den akkumulerede længde til kunder i andre byer. Den akkumulerede længde er på dette tidspunkt nul.</br>
+I input 2: Oprettelse af by-objekter i by-listen, med bynavn, antal kunder og den akkumulerede længde til kunder i andre byer. Den akkumulerede længde er på dette tidspunkt nul.</br>
 
 I input 3, Afstande målt fra en by til sig selv er nul og kan ignoreres. Afstande fra en by, kaldet A, til en anden by, kaldet B, er den samme som fra B til A, derfor kan den ene af disse to afstande også ignoreres. Resultatet er at første linje ignoreres, på den næste linje indlæses 1 tal, herefter 2 tal, herefter 3 tal,  osv. på den sidste linje indlæses N-1 tal. Ialt indlæses kun (n^2-n)/2 afstande.</br>
-For hver afstands-indlæsning imellem "by1" og "by2" beregnes et tillæg til den samlede akkumulerede afstand, for hver af de to byer. 
+For hver afstands-indlæsning beregnes et tillæg til den samlede den akkumulerede afstand, for hver af de to byer. 
 
 
 Pseudokode for sortering:
