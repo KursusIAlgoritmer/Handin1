@@ -20,20 +20,23 @@ Programmet betår overordnet af to dele; </br>
 
 Nedenfor ses pseudokoden, der beskriver en løsning til del 1:
 <pre>
-1: Først indlæses heltal "N"           
-2: Så oprettes liste "by" med N-pladser      
+1: indlæses heltal "N"           
+
+2: opret liste af byer, her kaldet "byer", med N-pladser      
+
 3: for( i=0 til N){                       
-4:  indlæs linje "bynavn" og "kunder"     
-5:  opret By objekt med indlæst data      
-6: } </br>
-</br>
+5:  opret "by objekt", initaliser med indlæsning "bynavn" og indlæsning "kunde antal"
+    indsæt byobjekt i "byer"
+6: }
+
 7: for( r = 1 til N ){                
 8:   for( c = 0 til r){         
 9:       (akkumuleret afstand for by[r]) forøges med (kunder by[c]) * (afstand fra by r til c)  
-10:       (akkumuleret afstand for by[c]) forøges med (kunder by[r]) * (afstand fra by r til c) 
+10:      (akkumuleret afstand for by[c]) forøges med (kunder by[r]) * (afstand fra by r til c) 
 11:}}
 </pre>
 
+I linje 
 
 
 
