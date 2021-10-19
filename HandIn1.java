@@ -15,10 +15,10 @@ class HandIn1 {
     }
 
     public int compareTo(Town by) {
-      if (by.accumulatedCustomerDistance > accumulatedCustomerDistance)
-        return -1;
-      else if (by.accumulatedCustomerDistance < accumulatedCustomerDistance)
+      if (accumulatedCustomerDistance > by.accumulatedCustomerDistance)
         return 1;
+      else if (accumulatedCustomerDistance < by.accumulatedCustomerDistance)
+        return -1;
       else
         return 0;
     }
@@ -28,11 +28,11 @@ class HandIn1 {
     }
   }
 
-  //Inverted Insertion sort - dvs. mindste først
-  public static void invertedInsertionSort(Comparable[] a) {
+  //Insertion sort
+  public static void insertionSort(Comparable[] a) {
     int N = a.length;
     for (int i = 1; i < N; i++) {
-      for (int j = i; j > 0 && a[j - 1].compareTo(a[j]) > 0; j--) {
+      for (int j = i; j > 0 && a[j].compareTo(a[j-1]) < 0; j--) {
         Comparable t = a[j];
         a[j] = a[j - 1];
         a[j - 1] = t;
@@ -62,7 +62,7 @@ class HandIn1 {
     }
 
     // Sorterer byne på baggrund af summeret afstand til kunder, mindste først
-    invertedInsertionSort(towns);
+    insertionSort(towns);
 
     for (Town town : towns)
       System.out.println(town.name);
