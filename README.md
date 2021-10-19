@@ -1,21 +1,53 @@
 # Handin1
 
-## Delopgave 1: Beskrivelse af løsning
+## Opgave
 
-N byer, med forskellige antal kunder, skal rangeres efter den samlede afstand til alle kunder i de andre byer.
-Problemet løses med program skrevet i Java der skal designes til at modtage følgende tekst-input:
-### linje 1             : Helttal N, der svarer til antal byer
-### linje 2 til N+1     : Bynavn efterfulgt af helttal, der angiver antallet af kunder i byen
-### linje N+2 til 2N+2  : Afstande fra by 0 til N til hver af de andre byer
+Et antal byer ønskes sorteret efter den samlede afstand til alle kunder i de andre byer.
+Programmet, der løser problemet er skrevet i Java og tager følgende input (fra opgavetekst):</br>
 
-Pseudokode for indlæsning og beregning af samlede afstand til kunder:
+Input 1: Første linje af input er et heltal, n, som angiver antallet af byer med kunder.</br>
+Input 2: De næste n linjer indeholder et bynavn efterfulgt af et heltal; antallet af kunder i den givne. Bynavne indeholder ikke mellemrum. </br>
+Input 3: Sidst er der n linjer, med n heltal hver, der angiver den parvise afstand mellem byerne, i samme rækkefølge som de er nævnt ovenfor. </br>
+
+## Beskrivelse af løsning
+
+Programmet betår overordnet af to dele: (1) Indlæsning og beregning akkumuleret afstand og (2) Sortering af byer</br>
+
+
+#### Program del 1: Indlæsning af input og beregning akkumuleret afstand til kunder
+Nedenfor ses pseudokoden, der beskriver en løsning til del 1:
+<pre>
+##input 1
+1: læs og opret heltal "N"
+2: opret liste "byer", med N-pladser      
+
+##input 2
+3: for( i=0 til N){                       
+4:      læs "navn" og "kunder" for en by
+5:      opret "By" med "navn", "kunder" og "akkumuleret afstand"
+6:      indsæt "By" i "byer"
+7: }
+
+##input 3
+8: gå til næste linje i input
+9: for( r = 1 til N ){                
+10:      for( c = 0 til r){         
+11:          by1       = hent plads r i byer
+12:          by2       = hent plads c i byer
+13:          afstand   = læs afstand fra by1 til by2
+14:          "by1 akkumuleret afstand"  forsøges med  "antal kunder i b2"  mulipliceret med "afstand"
+15:          "by2 akkumuleret afstand"  forsøges med  "antal kunder i b1"  mulipliceret med "afstand"
+15:     }
+16:     gå til næste linje i inputet
+17:}
+</pre>
+I input 1: Indlæsning af N og oprettelse af liste med plads til N "byer"</br>
+
+I input 2: Oprettelse af by-objekter i by-listen, med bynavn, antal kunder og den akkumulerede længde til kunder i andre byer. Den akkumulerede længde er på dette tidspunkt nul.</br>
+
+I input 3, Afstande målt fra en by til sig selv er nul og kan ignoreres. Afstande fra en by, kaldet A, til en anden by, kaldet B, er den samme som fra B til A, derfor kan den ene af disse to afstande også ignoreres. Resultatet er at første linje ignoreres, på den næste linje indlæses 1 tal, herefter 2 tal, herefter 3 tal,  osv. på den sidste linje indlæses N-1 tal. Ialt indlæses kun (n^2-n)/2 afstande.</br>
+For hver afstands-indlæsning beregnes et tillæg til den samlede den akkumulerede afstand, for hver af de to byer. 
+
 
 Pseudokode for sortering:
 
-
-
-Kompilering:
-javac InputOutput.java
-
-Eksekver:
-java InputOutput < input.in
