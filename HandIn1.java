@@ -24,13 +24,13 @@ class HandIn1 {
   }
 
   //Insertion sort
-  public static void insertionSort(Comparable[] a) {
-    int N = a.length;
+  public static void insertionSortOfTowns(Town[] towns) {
+    int N = towns.length;
     for (int i = 1; i < N; i++) {
-      for (int j = i; j > 0 && a[j].compareTo(a[j-1]) < 0; j--) {
-        Comparable t = a[j];
-        a[j] = a[j - 1];
-        a[j - 1] = t;
+      for (int j = i; j > 0 && towns[j].compareTo(towns[j-1]) < 0; j--) {
+        Town t = towns[j];
+        towns[j] = towns[j - 1];
+        towns[j - 1] = t;
       }
     }
   }
@@ -57,7 +57,7 @@ class HandIn1 {
     }
 
     // Sorterer byerne på baggrund af summeret afstand til kunder, mindste først
-    insertionSort(towns);
+    insertionSortOfTowns(towns);
 
     for (Town town : towns)
       System.out.println(town.name);
