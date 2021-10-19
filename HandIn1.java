@@ -15,12 +15,7 @@ class HandIn1 {
     }
 
     public int compareTo(Town by) {
-      if (accumulatedCustomerDistance > by.accumulatedCustomerDistance)
-        return 1;
-      else if (accumulatedCustomerDistance < by.accumulatedCustomerDistance)
-        return -1;
-      else
-        return 0;
+      return accumulatedCustomerDistance - by.accumulatedCustomerDistance;
     }
 
     public void addCustomerDistance(Town town, int distanceToTown) {
@@ -61,7 +56,7 @@ class HandIn1 {
       s.nextLine();
     }
 
-    // Sorterer byne på baggrund af summeret afstand til kunder, mindste først
+    // Sorterer byerne på baggrund af summeret afstand til kunder, mindste først
     insertionSort(towns);
 
     for (Town town : towns)
